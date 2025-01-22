@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class ExperienceManager : IGenericService<Experience>
+    public class ExperienceManager : IExperienceService
     {
         IExperienceDal _experienceDal;
 

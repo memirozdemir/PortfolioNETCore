@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class SocialMediaManager : IGenericService<SocialMedia>
+    public class SocialMediaManager : ISocialMediaService
     {
         ISocialMediaDal _socialMediaDal;
 

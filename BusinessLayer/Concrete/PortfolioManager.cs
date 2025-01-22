@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class PortfolioManager : IGenericService<Portfolio>
+    public class PortfolioManager : IPortfolioService
     {
         IPortfolioDal _portfolioDal;
 

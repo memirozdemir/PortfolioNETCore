@@ -1,0 +1,62 @@
+﻿@model EntityLayer.Concrete.Portfolio
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+<style>
+    .form-group-new{
+        display:flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+</style>
+
+<div class="card bg-default shadow">
+    <div class="card-header bg-transparent border-0">
+        <h3 class="text-white mb-0">Proje Ekle</h3>
+        <br />
+        <br />
+        <form class="form-group"  method="post">
+            @Html.HiddenFor(x =>x.PortfolioID)
+            <label>Proje Adı</label>
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+            <br />
+            <label>Platform Resim Yolu</label>
+            @Html.TextBoxFor(x => x.Platform, new { @class = "form-control" })
+            <br />
+            <label>Proje Ücret</label>
+            @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+            <br />
+            <label>Proje Status (True-False)</label>
+            @Html.TextBoxFor(x => x.Status, new { @class = "form-control" })
+            <br />
+            <label>Proje Küçük Resim Yolu</label>
+            @Html.TextBoxFor(x => x.ImageURL, new { @class = "form-control" })
+            <br />
+            <label>Proje Büyük Resim Yolu</label>
+            @Html.TextBoxFor(x => x.ImageURL2, new { @class = "form-control" })
+            <br />
+            <label>Proje Resim 1</label>
+            @Html.TextBoxFor(x => x.Image1, new { @class = "form-control" })
+            <br />
+            <label>Proje Resim 2</label>
+            @Html.TextBoxFor(x => x.Image2, new { @class = "form-control" })
+            <br />
+            <label>Proje Resim 3</label>
+            @Html.TextBoxFor(x => x.Image3, new { @class = "form-control" })
+            <br />
+            <label>Proje Resim 4</label>
+            @Html.TextBoxFor(x => x.Image4, new { @class = "form-control" })
+            <br />
+            <label>Proje Tamamlanan Kısım (Max 100)</label>
+            @Html.TextBoxFor(x => x.Value, new { @class = "form-control" })
+            <br />
+            <label>Proje URL</label>
+            @Html.TextBoxFor(x => x.ProjectURL, new { @class = "form-control" })
+            <br />
+            <button class="btn btn-outline-success">Kaydet</button>
+        </form>
+    </div>
+</div>
+
+
