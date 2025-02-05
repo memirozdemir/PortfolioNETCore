@@ -23,6 +23,11 @@ namespace BusinessLayer.Concrete
             _messageDal.Insert(t);
         }
 
+        public List<Message> TGetByFilter(string p)
+        {
+            throw new NotImplementedException();
+        }
+
         public Message TGetByID(int id)
         {
             return _messageDal.GetByID(id);

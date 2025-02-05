@@ -23,6 +23,11 @@ namespace BusinessLayer.Concrete
             _experienceDal.Insert(t);
         }
 
+        public List<Experience> TGetByFilter(string p)
+        {
+            throw new NotImplementedException();
+        }
+
         public Experience TGetByID(int id)
         {
             return _experienceDal.GetByID(id);

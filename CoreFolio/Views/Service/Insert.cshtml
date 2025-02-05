@@ -1,10 +1,12 @@
 ﻿@model EntityLayer.Concrete.Service
 @{
     ViewData["Title"] = "Insert";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
-<div class="card-header border-0">
-    <h3 class="mb-0">Deneyim Ekle</h3>
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Yeni Hizmet Ekle</h4>
     <br />
     <br />
     @using (Html.BeginForm("Insert", "Service", FormMethod.Post))
@@ -18,5 +20,7 @@
         <br />
         <button class="btn btn-outline-success">Kaydet</button>
     }
+</div>
+</div>
 </div>
 

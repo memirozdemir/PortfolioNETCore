@@ -23,6 +23,11 @@ namespace BusinessLayer.Concrete
             _contactDal.Insert(t);
         }
 
+        public List<Contact> TGetByFilter(string p) 
+        {
+            throw new NotImplementedException();
+        }
+
         public Contact TGetByID(int id)
         {
             return _contactDal.GetByID(id);

@@ -1,0 +1,39 @@
+﻿@model EntityLayer.Concrete.Contact
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">İletişim Bilgileri</h4>
+            @using (Html.BeginForm("Index", "SubContact", FormMethod.Post))
+            {
+                @Html.HiddenFor(x => x.ContactID)
+                <br />
+                <label>Başlık</label>
+                @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+                <br />
+                <label>Açıklama</label>
+                @Html.TextAreaFor(x => x.Description, 4, 20, new { @class = "form-control" })
+                <br />
+                <label>Mail</label>
+                @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+                <br />
+                <label>Telefon</label>
+                @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+                <br />
+                <button class="btn btn-outline-success">Güncelle</button>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+

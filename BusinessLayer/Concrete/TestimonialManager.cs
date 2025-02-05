@@ -23,6 +23,11 @@ namespace BusinessLayer.Concrete
             _testimonialDal.Insert(t);
         }
 
+        public List<Testimonial> TGetByFilter(string p)
+        {
+            throw new NotImplementedException();
+        }
+
         public Testimonial TGetByID(int id)
         {
             return _testimonialDal.GetByID(id);

@@ -23,6 +23,11 @@ namespace BusinessLayer.Concrete
             _aboutDal.Insert(t);
         }
 
+        public List<About> TGetByFilter(string p)
+        {
+            throw new NotImplementedException();
+        }
+
         public About TGetByID(int id)
         {
             return _aboutDal.GetByID(id);

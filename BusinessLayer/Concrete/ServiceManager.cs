@@ -22,6 +22,11 @@ namespace BusinessLayer.Concrete
             _serviceDal.Insert(t);
         }
 
+        public List<Service> TGetByFilter(string p)
+        {
+            throw new NotImplementedException();
+        }
+
         public Service TGetByID(int id)
         {
             return _serviceDal.GetByID(id);
