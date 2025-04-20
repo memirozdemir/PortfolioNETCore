@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CoreFolio.Controllers
 {
     public class DashboardController : Controller
     {
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             ViewBag.page = "Dashboard";

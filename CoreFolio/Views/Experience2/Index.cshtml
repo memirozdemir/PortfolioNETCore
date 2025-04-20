@@ -1,0 +1,121 @@
+﻿@model List<EntityLayer.Concrete.Experience>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<div class="col-md-6">
+    <div class="p-2">
+        <button type="button" id="btngetlistall" class="btn btn-outline-primary">Verileri Getir</button>
+        <button type="button" id="btnadd" class="btn btn-outline-primary">Ekle</button>
+        <button type="button" id="btnid" class="btn btn-outline-primary">Id'ye gore getir</button>
+        <button type="button" id="btndelete" class="btn btn-outline-primary">Sil</button>
+        <button type="button" id="btnupdate" class="btn btn-outline-primary">Guncelle</button>
+    </div>
+</div>
+
+<div class="p-2" id="listdata">
+</div>
+<div class="p-2" id="listbyiddata">
+</div>
+<br />
+<div class="col-md-12">
+    <input type="text" class="form-control" id="inpname" placeholder="Proje Adı" />
+    <br />
+    <input type="text" class="form-control" id="inpdate" placeholder="Tarih" />
+    <br />
+    <input type="text" class="form-control" id="inpimgurl" placeholder="Kullanici Adi" />
+    <br />
+    <input type="text" class="form-control" id="inpdesc" placeholder="Mail Adresi" />
+    <br />
+    <input type="text" class="form-control" id="inpcompany" placeholder="Mail Adresi" />
+    <br />
+
+</div>
+<div class="col-md-12">
+    <h4>Idye gore getir</h4>
+    <input type="text" class="form-control" id="inpgetid" placeholder="Id Giriniz" />
+</div>
+<div class="col-md-12">
+    <h4>Silme Paneli</h4>
+    <input type="text" class="form-control" id="inpexpid" placeholder="Id Giriniz" />
+</div>
+@section Scripts {
+    <script>
+        $("#btngetlistall").click(function(){
+            $.ajax({
+               contentType:"application/json",
+               dataType: "json",
+               type:"Get",
+               url: "/Experience2/ListExperience/",
+
+               success: function(funk){
+               let values = jQuery.parseJSON(funk);
+               console.log(values);
+
+               let htmlst="<table class=table table-bordered> <tr> <th> ID </th> <th> Başlık </th> <th> Tarih </th> </tr>"
+               $.each(values,(index,value) => {
+                     htmlst += "<tr> <td>"+value.ExperienceID+"</td> <td>"+value.Name+"</td> <td>"+value.Date+"</td> </tr>"
+               });
+               htmlst += "</table>";
+               $("#listdata").html(htmlst);
+               }
+            });
+        });
+
+        $("#btnadd").click(function(){
+            let values={
+                Name: $("#inpname").val(),
+                Date: $("#inpdate").val(),
+                ImageURL: $("#inpimgurl").val(),
+                Description: $("#inpdesc").val(),
+                Company: $("#inpcompany").val(),
+            };
+
+            $.ajax({
+                type:"Post",
+                url: "/Experience2/AddExperience/",
+                data: values,
+                success: function(funk1){
+                    let result = jQuery.parseJSON(funk1);
+                    alert(result.Name + "Basarili bir sekilde eklendi");
+                }
+            });
+        })
+
+        $("#btnid").click(x=>{
+            let id =$("#inpgetid").val();
+
+            $.ajax({
+                contentType:"application/json",
+                dataType: "json",
+                type:"Get",
+                url: "/Experience2/GetByID/",
+                data:{ExperienceID:id},
+                success:function(funk2){
+                    let result = jQuery.parseJSON(funk2);
+                 let htmlstr=`<table class = table table-hover> <tr> <th>Deneyim ID</th> <td> ${result.ExperienceID}</td> <tr/> <tr> <th>Deneyim Basligi<th/> <td> ${result.Name}<td/> <tr/> </table>`;
+                    $("#listbyiddata").html(htmlstr);
+                }
+            })
+
+        })
+
+        $("#btndelete").click(function(){
+            let id = $("#inpexpid").val();
+            $.ajax({
+                type:"Post",
+                url: "/Experience2/DeleteExperience/",
+                data:{ExperienceID:id},
+                success:function(funk3){
+                    alert(result.Name + "Basarili bir sekilde silindi");
+                    loadData();
+                }
+            })
+        })
+    </script>
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+

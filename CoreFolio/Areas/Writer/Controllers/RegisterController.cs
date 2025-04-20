@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CoreFolio.Areas.Writer.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     [Area("Writer")]
     [Route("Writer/[controller]/[action]")]
 

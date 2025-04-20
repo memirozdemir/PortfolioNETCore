@@ -1,10 +1,12 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoreFolio.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class SocialMediaController : Controller
     {
         SocialMediaManager scm = new SocialMediaManager(new EfSocialMediaDal()); 
@@ -20,6 +22,7 @@ namespace CoreFolio.Controllers
         [HttpPost]
         public IActionResult Insert(SocialMedia socialMedia)
         {
+            socialMedia.Status = true;
             scm.TAdd(socialMedia);
             return RedirectToAction("Index");
         }
@@ -31,6 +34,7 @@ namespace CoreFolio.Controllers
         [HttpPost]
         public IActionResult Edit(SocialMedia socialMedia)
         {
+            socialMedia.Status = true;
             scm.TUpdate(socialMedia);
             return RedirectToAction("Index");
         }
